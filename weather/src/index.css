@@ -2,10 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  margin: 0;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -16,10 +17,21 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+} */
+
+#root {
+  font-family: Roboto, sans-serif;
+  padding: 0;
 }
 
 body {
   background-image: url("./assets/sky.jpg");
   height: 100vh;
   margin: 0;
+}
+
+@layer utilities {
+  .outline-input {
+    outline: none;
+  }
 }
