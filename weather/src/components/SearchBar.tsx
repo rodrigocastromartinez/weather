@@ -48,6 +48,8 @@ export default function SearchBar() {
         try {
             if (searchValue === '') return
 
+            if(localStorage.credits <= 0) return
+
             console.log(searchValue)
     
             getCityCoordinates(searchValue).then(coordinates => {
@@ -69,6 +71,7 @@ export default function SearchBar() {
                         weathercode: res.data.daily.weathercode,
                     }
                     setDaily(daily)
+                    localStorage.credits = localStorage.credits - 1
                 }).catch(error => {
                     console.log(error.message)
                     alert('City not found')
@@ -84,10 +87,16 @@ export default function SearchBar() {
         setSearchValue(event.target.value)
     }
 
+    if(!localStorage.credits) localStorage.credits = 5
+
     console.log(forecast)
     console.log(prediction)
 
     return <>
+    <div className='flex justify-between w-full p-4 fixed top-0'>
+        <span className='p-2 bg-slate-100/50 text-slate-700 rounded-md'>Credits: {localStorage.credits}</span>
+        <button>Dark mode</button>
+    </div>
     <div className="flex flex-col justify-center items-center gap-6 w-full h-full">
         <form className="flex rounded-md bg-slate-100/50 backdrop-blur-md h-fit" onSubmit={(event) => searchCity(event)}>
             <input 
