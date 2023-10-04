@@ -88,16 +88,16 @@ export default function SearchBar() {
     console.log(prediction)
 
     return <>
-    <div className="flex flex-col justify-center items-center gap-6 w-full">
-        <form className="flex rounded-md bg-slate-700/50 backdrop-blur-md h-fit" onSubmit={(event) => searchCity(event)}>
+    <div className="flex flex-col justify-center items-center gap-6 w-full h-full">
+        <form className="flex rounded-md bg-slate-100/50 backdrop-blur-md h-fit" onSubmit={(event) => searchCity(event)}>
             <input 
             type="search" 
-            className="text-lg text-slate-100 placeholder:text-slate-300 bg-transparent m-0 font-normal py-2 px-4 w-full focus:outline-input"
-            placeholder="Search city"
+            className="text-lg text-slate-700 placeholder:text-slate-600 bg-transparent m-0 font-normal py-2 px-4 w-full focus:outline-input"
+            placeholder="Search city..."
             value={searchValue}
             onChange={handleInputChange}
             />
-            <button className="flex items-center p-2" type="submit" ><span className="material-symbols-outlined text-slate-100 text-3xl" >search</span></button>
+            <button className="flex items-center p-2" type="submit" ><span className="material-symbols-outlined text-slate-700 text-3xl" >search</span></button>
         </form>
         {forecast && <div className="flex">
             <div
@@ -105,14 +105,14 @@ export default function SearchBar() {
             role="group">
                 <button
                     type="button"
-                    className={`inline-block rounded-l ${prediction === 'day' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-500`}
+                    className={`inline-block rounded-l ${prediction === 'day' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
                     onClick={() => setPrediction('day')}
                 >
                     DAY
                 </button>
                 <button
                     type="button"
-                    className={`inline-block rounded-r ${prediction === 'week' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out hover:bg-primary-500`}
+                    className={`inline-block rounded-r ${prediction === 'week' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
                     onClick={() => setPrediction('week')}
                 >
                 WEEK
