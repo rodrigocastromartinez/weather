@@ -22,12 +22,8 @@ export default function HourForecast({ hourly, mode }: HourForecastProps) {
 
             if (date <= initialHour || date >= finalHour) return
 
-            console.log(date)
-
             const hourFormated = date.toString().split(' ')
             const icon = ICON_MAP.get(hourly.weathercode[index])
-            console.log('ICONO')
-            console.log(icon)
 
             return <div key={index} className='flex justify-between items-center p-4'>
                         <p>{hourFormated[0] + ' ' + hourFormated[2]} - {hourFormated[4][0] + hourFormated[4][1]}hs</p>

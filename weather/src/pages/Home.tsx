@@ -38,13 +38,16 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     const [daily, setDaily] = useState<Daily>()
     const [prediction, setPrediction] = useState('day')
     const [mode, setMode] = useState<string>(localStorage.mode)
+    const [city, setCity] = useState<{name: string, country: string}>()
+    const [error, setError] = useState<string>()
   
     initTE({ Ripple })
 
     const handleSearchCity = (event: FormEvent) => {
         event.preventDefault()
         try {
-            if (searchValue === '') return
+            const letters = /^[a-zA-Z]+$/
+            if (searchValue === '' || !letters.test(searchValue)) return
 
             if(localStorage.credits <= 0) {
                 setSubscriptionModal(true)
@@ -52,10 +55,16 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                 return
             } 
     
-            getCityCoordinates(searchValue).then(coordinates => {
-                if(!coordinates) throw new Error('Coordinates not found')
+            getCityCoordinates(searchValue).then(city => {
+                if(!city){
+                    setError('⚠️City not found⚠️')
 
-                getForecast(coordinates.lat, coordinates.lon).then(res => {
+                    throw new Error('city not found')
+                }
+                setCity({name: city.name, country: city.country})
+
+                getForecast(city.lat, city.lon).then(res => {
+                    setError(undefined)
                     const hourly = {
                         relativehumidity_2m: res.data.hourly.relativehumidity_2m,
                         temperature_2m: res.data.hourly.temperature_2m,
@@ -75,8 +84,9 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                     setCredits(localStorage.credits)
                 }).catch(error => {
                     console.log(error.message)
-                    alert('City not found')
                 })
+            }).catch(error => {
+                console.log(error.message)
             })
         } catch(error: any) {
             console.log(error.message)
@@ -93,9 +103,11 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     <div className='h-screen w-screen flex flex-col justify-center items-center gap-4 text-[var(--slate-700)]'>
     <div className="flex flex-col justify-center items-center gap-6 w-full h-full">
         <SearchForm handleSearchCity={handleSearchCity} searchValue={searchValue} handleInputChange={handleInputChange} />
-        {forecast && <ChoiceButtons prediction={prediction} setPrediction={setPrediction} />}
-        {daily && prediction === 'day' && <HourForecast hourly={hourly!} mode={mode} ></HourForecast>}
-        {hourly && prediction === 'week' && <DayForecast daily={daily!} mode={mode} ></DayForecast>}
+        {error && <p className='text-xl italic font-semibold'>{error}</p>}
+        {!error && city && <p className='text-xl italic font-semibold'>{city.name}, {city.country}</p>}
+        {!error && forecast && <ChoiceButtons prediction={prediction} setPrediction={setPrediction} />}
+        {!error && daily && prediction === 'day' && <HourForecast hourly={hourly!} mode={mode} ></HourForecast>}
+        {!error && hourly && prediction === 'week' && <DayForecast daily={daily!} mode={mode} ></DayForecast>}
     </div>
     </div>
     </> 

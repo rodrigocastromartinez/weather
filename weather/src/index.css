@@ -30,11 +30,15 @@
 #root {
   font-family: Roboto, sans-serif;
   padding: 0;
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 body {
   height: 100vh;
   margin: 0;
+  padding: 0;
 }
 
 .dark-filter {
