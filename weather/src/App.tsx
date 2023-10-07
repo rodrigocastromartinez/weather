@@ -1,16 +1,31 @@
 import './App.css'
-import SearchBar from './components/SearchBar'
-import SuscriptionModal from './components/SuscriptionModal'
+import Home from './pages/Home'
+import SubscriptionModal from './components/SubscriptionModal'
+import { Routes, Route } from 'react-router-dom'
+import Register from './pages/Register'
+import { useState } from 'react'
 
 function App() {
+  const [subscriptionModal, setSubscriptionModal] = useState(false)
+
+  if (!localStorage.mode)
+  localStorage.mode = 'light'
+
+  if (localStorage.mode === 'dark') {
+    if (!document.querySelector('html')!.classList.contains('dark'))
+        document.querySelector('html')!.classList.add('dark')
+  } else {
+    if (document.querySelector('html')!.classList.contains('dark'))
+        document.querySelector('html')!.classList.remove('dark')
+  }
 
   return (
     <>
-    {localStorage.credits < 1 && <SuscriptionModal />}
-    <div className='h-screen flex flex-col justify-center items-center gap-4 text-slate-700'>
-      <SearchBar />
-      {/* <div className='flex rounded-md bg-slate-700/50 backdrop-blur-md h-96 w-4/5'></div> */}
-    </div>
+    {subscriptionModal && <SubscriptionModal setSubscriptionModal={setSubscriptionModal} />}
+    <Routes>
+      <Route path='/' element={<Home setSubscriptionModal={setSubscriptionModal} />} />
+      <Route path='/register' element={<Register />} />
+    </Routes>
     </>
   )
 }

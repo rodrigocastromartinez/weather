@@ -2,22 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-/* :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  margin: 0;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@layer base {
+  :root {
+    --slate-100-50: rgba(241, 245, 249, 0.5);
+    --slate-100: rgba(241, 245, 249, 1);
+    --slate-700: rgba(51, 65, 85, 1);
+    --slate-700-75: rgba(51, 65, 85, 0.75);
+    --slate-600: rgba(71, 85, 105, 1);
+    --yellow: rgb(186, 163, 31);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-} */
+    background-image: url("./assets/sky.jpg");
+  }
+
+  :root.dark {
+    --slate-100-50: rgba(51, 65, 85, 0.5);
+    --slate-100: rgba(51, 65, 85, 1);
+    --slate-700: rgba(241, 245, 249, 1);
+    --slate-700-75: rgba(241, 245, 249, 0.75);
+    --slate-600: rgba(226, 232, 240, 1);
+    --yellow: rgb(186, 163, 31);
+
+    background-image: url("./assets/night.jpg");
+  }
+}
 
 #root {
   font-family: Roboto, sans-serif;
@@ -25,9 +33,16 @@
 }
 
 body {
-  background-image: url("./assets/sky.jpg");
   height: 100vh;
   margin: 0;
+}
+
+.dark-filter {
+  filter: invert(100%) sepia(29%) saturate(789%) hue-rotate(174deg) brightness(93%) contrast(110%)
+}
+
+.light-filter {
+  filter: invert(21%) sepia(69%) saturate(2752%) hue-rotate(213deg) brightness(88%) contrast(85%);
 }
 
 @layer utilities {
