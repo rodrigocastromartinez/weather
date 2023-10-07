@@ -27,7 +27,7 @@ interface Daily {
 }
 
 interface HomeProps {
-    setSubscriptionModal: (a: boolean) => void
+    setSubscriptionModal: (modal: boolean) => void
 }
 
 export default function Home({setSubscriptionModal}: HomeProps) {
@@ -90,7 +90,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
             })
         } catch(error: any) {
             console.log(error.message)
-            alert('Error getting weather')
+            setError('⚠️Error getting weather⚠️')
         }
     }
 
