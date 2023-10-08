@@ -6,6 +6,10 @@ interface SearchFormProps {
     handleInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
+/**
+ * Search bar where city name must be given as an input by the user
+ */
+
 export default function SearchForm({ handleSearchCity, searchValue, handleInputChange }: SearchFormProps) {
     return <>
     <form className="flex rounded-md bg-[var(--slate-100-50)] backdrop-blur-md h-fit" onSubmit={(event) => handleSearchCity(event)}>

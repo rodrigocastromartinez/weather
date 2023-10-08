@@ -3,6 +3,10 @@ interface ModeButtonProps {
     switchMode: () => void
 }
 
+/**
+ * Switch button to change between dark and light mode
+ */
+
 export default function ModeButton({switchMode}: ModeButtonProps) {
 
     return <>

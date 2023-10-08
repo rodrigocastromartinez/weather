@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
   :root {
     --slate-100-50: rgba(241, 245, 249, 0.5);
@@ -11,6 +10,8 @@
     --slate-700-75: rgba(51, 65, 85, 0.75);
     --slate-600: rgba(71, 85, 105, 1);
     --yellow: rgb(186, 163, 31);
+    --button-background: #154593;
+    --button-background-selected: #103570;
 
     background-image: url("./assets/sky.jpg");
   }
@@ -22,6 +23,8 @@
     --slate-700-75: rgba(241, 245, 249, 0.75);
     --slate-600: rgba(226, 232, 240, 1);
     --yellow: rgb(186, 163, 31);
+    --button-background: rgba(51, 65, 85, 1);
+    --button-background-selected: rgb(34, 43, 57);
 
     background-image: url("./assets/night.jpg");
   }
@@ -33,6 +36,7 @@
   margin: 0;
   height: 100vh;
   width: 100vw;
+  background-size: cover;
 }
 
 body {
@@ -46,7 +50,7 @@ body {
 }
 
 .light-filter {
-  filter: invert(21%) sepia(69%) saturate(2752%) hue-rotate(213deg) brightness(88%) contrast(85%);
+  filter: invert(18%) sepia(59%) saturate(2752%) hue-rotate(213deg) brightness(88%) contrast(85%);
 }
 
 @layer utilities {

@@ -4,6 +4,10 @@ interface SubscriptionModalProps {
     setSubscriptionModal: (subscriptionModal: boolean) => void
 }
 
+/**
+ * Modal showed after running out of credits
+ */
+
 export default function SubscriptionModal({ setSubscriptionModal }: SubscriptionModalProps ) {
     const navigate = useNavigate()
 

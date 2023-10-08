@@ -5,6 +5,10 @@ interface ChoiceButtonsProps {
     prediction: string
 }
 
+/**
+ * Set of two buttons that allows the user to choose day or week prediction
+ */
+
 export default function ChoiceButtons({prediction, setPrediction}: ChoiceButtonsProps) {
     useEffect(() => {}, [prediction])
     
@@ -15,14 +19,14 @@ export default function ChoiceButtons({prediction, setPrediction}: ChoiceButtons
             role="group">
                 <button
                     type="button"
-                    className={`inline-block rounded-l ${prediction === 'day' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
+                    className={`inline-block rounded-l ${prediction === 'day' ? 'bg-[var(--button-background-selected)]' : 'bg-[var(--button-background)]'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
                     onClick={() => setPrediction('day')}
                 >
                 DAY
                 </button>
                 <button
                     type="button"
-                    className={`inline-block rounded-r ${prediction === 'week' ? 'bg-primary-700' : 'bg-primary-600'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
+                    className={`inline-block rounded-r ${prediction === 'week' ? 'bg-[var(--button-background-selected)]' : 'bg-[var(--button-background)]'} px-6 pb-2 pt-2.5 text-lg font-medium uppercase leading-normal text-white transition duration-150 ease-in-out sm:hover:bg-primary-500`}
                     onClick={() => setPrediction('week')}
                 >
                 WEEK

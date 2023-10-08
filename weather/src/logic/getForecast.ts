@@ -4,7 +4,7 @@ import axios from 'axios'
  * Gets forecast for a given location
  * @param {number} lat location latitude
  * @param {number} lon location longitude
- * @returns {JSON} forecast for the given location
+ * @returns {Promise} forecast for the given location
  */
 
 export default function getForecast(lat: number, lon: number) {
