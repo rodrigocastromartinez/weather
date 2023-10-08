@@ -6,6 +6,8 @@ import DayForecast from '../components/DayForecast'
 import TopBar from '../components/TopBar'
 import ChoiceButtons from '../components/ChoiceButtons'
 import SearchForm from '../components/SearchForm'
+import useAppContext from '../hooks/useAppContext'
+
     // Initialization for ES Users
 import {
     Ripple,
@@ -43,17 +45,24 @@ export default function Home({setSubscriptionModal}: HomeProps) {
   
     initTE({ Ripple })
 
+    const { freeze, unfreeze } = useAppContext()!
+
     const handleSearchCity = (event: FormEvent) => {
+        freeze()
         event.preventDefault()
         try {
-            const letters = /^[a-zA-Z]+$/
+            const letters = /^[a-zA-Z\s]+$/
             if (searchValue === '' || !letters.test(searchValue)) {
+                unfreeze()
+
                 setError('⚠️City name not valid⚠️')
 
                 return
             }
 
             if(localStorage.credits <= 0) {
+                unfreeze()
+
                 setSubscriptionModal(true)
                 
                 return
@@ -61,6 +70,8 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     
             getCityCoordinates(searchValue).then(city => {
                 if(!city){
+                    unfreeze()
+
                     setError('⚠️City not found⚠️')
 
                     throw new Error('city not found')
@@ -86,13 +97,17 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                     setDaily(daily)
                     localStorage.credits = localStorage.credits - 1
                     setCredits(localStorage.credits)
+                    unfreeze()
                 }).catch(error => {
+                    unfreeze()
                     console.log(error.message)
                 })
             }).catch(error => {
+                unfreeze()
                 console.log(error.message)
             })
         } catch(error: any) {
+            unfreeze()
             console.log(error.message)
             setError('⚠️Error getting weather⚠️')
         }
@@ -107,7 +122,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     <div className='h-5/6 w-full flex flex-col justify-center items-center gap-4 text-[var(--slate-700)]'>
     <div className="flex flex-col justify-center items-center gap-4 sm:gap-6 w-full h-full">
         <SearchForm handleSearchCity={handleSearchCity} searchValue={searchValue} handleInputChange={handleInputChange} />
-        {error && <p className='text-xl italic font-semibold'>{error}</p>}
+        {error && <p className='text-xl italic rounded-md font-semibold bg-[var(--slate-100-50)] backdrop-blur-md h-fit p-4'>{error}</p>}
         {!error && city && <p className='text-xl italic font-semibold rounded-md bg-[var(--slate-100-50)] backdrop-blur-md h-fit p-4'>{city.name}, {city.country}</p>}
         {!error && forecast && <ChoiceButtons prediction={prediction} setPrediction={setPrediction} />}
         {!error && daily && prediction === 'day' && <HourForecast hourly={hourly!} mode={mode} ></HourForecast>}
