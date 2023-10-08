@@ -16,7 +16,7 @@ interface DayForecastProps {
 
 export default function DayForecast({ daily, mode }: DayForecastProps) {
 
-    return <div className='w-5/6 h-1/2 sm:h-3/5 max-w-md rounded-md bg-[var(--slate-100-50)] backdrop-blur-md overflow-auto p-6 flex flex-col gap-6'>
+    return <div className='w-5/6 h-1/2 sm:h-3/5 lg:desktop-panel max-w-md rounded-md bg-[var(--slate-100-50)] backdrop-blur-md overflow-auto p-6 flex flex-col gap-6'>
         {daily.time.map((day, index) => {
             const date = new Date(day * 1000)
             const dateFormated = date.toString().split(' ')

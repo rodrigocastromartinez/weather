@@ -19,7 +19,7 @@ export default function HourForecast({ hourly, mode }: HourForecastProps) {
     const finalHour = new Date(initialHour)
     finalHour.setTime(initialHour.getTime() + 24 * 60 * 60 * 1000)
 
-    return <div className='w-5/6 h-1/2 sm:h-3/5 max-w-md rounded-md bg-[var(--slate-100-50)] backdrop-blur-md overflow-auto'>
+    return <div className='w-5/6 h-1/2 sm:h-3/5 lg:desktop-panel max-w-md rounded-md bg-[var(--slate-100-50)] backdrop-blur-md overflow-auto'>
     {   
         hourly.time.map((hour: number, index: number) => {
             const date = new Date(hour * 1000)

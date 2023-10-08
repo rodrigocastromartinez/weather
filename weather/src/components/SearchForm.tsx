@@ -15,7 +15,7 @@ export default function SearchForm({ handleSearchCity, searchValue, handleInputC
     <form className="flex rounded-md bg-[var(--slate-100-50)] backdrop-blur-md h-fit" onSubmit={(event) => handleSearchCity(event)}>
             <input 
             type="search" 
-            className="text-lg text-[var(--slate-700)] placeholder:text-[var(--slate-600)] bg-transparent m-0 font-normal py-2 px-4 w-full focus:outline-input"
+            className="text-lg text-[var(--slate-700)] placeholder:text-[var(--slate-600)] bg-transparent m-0 font-normal py-2 px-4 w-full focus:outline-input search-form"
             placeholder="Search city..."
             value={searchValue}
             onChange={handleInputChange}

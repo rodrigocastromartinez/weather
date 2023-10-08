@@ -8,12 +8,6 @@ import ChoiceButtons from '../components/ChoiceButtons'
 import SearchForm from '../components/SearchForm'
 import useAppContext from '../hooks/useAppContext'
 
-    // Initialization for ES Users
-import {
-    Ripple,
-    initTE,
-} from "tw-elements"
-
 interface Hourly {
     relativehumidity_2m: number[],
     temperature_2m: number[],
@@ -42,8 +36,6 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     const [mode, setMode] = useState<string>(localStorage.mode)
     const [city, setCity] = useState<{name: string, country: string}>()
     const [error, setError] = useState<string>()
-  
-    initTE({ Ripple })
 
     const { freeze, unfreeze } = useAppContext()!
 
@@ -76,6 +68,9 @@ export default function Home({setSubscriptionModal}: HomeProps) {
 
                     throw new Error('city not found')
                 }
+
+                document.querySelector(".search-form")!.blur()
+
                 setCity({name: city.name, country: city.country})
 
                 getForecast(city.lat, city.lon).then(res => {

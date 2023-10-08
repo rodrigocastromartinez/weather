@@ -53,6 +53,10 @@ body {
   filter: invert(18%) sepia(59%) saturate(2752%) hue-rotate(213deg) brightness(88%) contrast(85%);
 }
 
+.desktop-panel {
+  min-height: 90%;
+}
+
 @layer utilities {
   .outline-input {
     outline: none;
