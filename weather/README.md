@@ -20,6 +20,8 @@ The design can be found here: https://www.figma.com/file/P2ZGl63OM7iQZH3dx4RxlN/
 
 ## RUN AND DEPLOY
 
+To run the app, first of all, you must install the dependencies. To do so, go to the project folder in the terminal and execute the script: npm install. Then:
+
 To run the app in development mode go to the project folder in the terminal and execute the script: npm run dev
 
 To build the app for deployment go to the project folder in the terminal and execute the script: npm run build

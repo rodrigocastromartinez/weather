@@ -105,6 +105,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                 unfreeze()
                 console.log(error.message)
             })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch(error: any) {
             unfreeze()
             console.log(error.message)
