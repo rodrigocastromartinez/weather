@@ -31,7 +31,7 @@ export default function HourForecast({ hourly, mode }: HourForecastProps) {
 
             return <div key={index} className='flex justify-between items-center p-4'>
                         <p>{hourFormated[0] + ' ' + hourFormated[2]} - {hourFormated[4][0] + hourFormated[4][1]}hs</p>
-                        <img src={`../../public/${icon[0]}.svg`} alt="" className={`h-8 w-8 ${mode}-filter`}/>                
+                        <img src={`../${icon[0]}.svg`} alt="" className={`h-8 w-8 ${mode}-filter`}/>                
                         <p>T:{hourly.temperature_2m[index]}ºC</p>
                         <p>H:{hourly.relativehumidity_2m[index]}%</p>
             </div>

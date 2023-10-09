@@ -26,7 +26,7 @@ export default function DayForecast({ daily, mode }: DayForecastProps) {
             return <div key={index} className='flex justify-center items-center h-24 gap-4'>
                 <div className='flex items-center justify-between w-full'>
                     <div className='w-1/4 sm:w-4/12'><p className='flex'>{index === 0 ? 'Today' : dateFormated[0]}</p></div>
-                    <div className='w-1/4 sm:mx-auto'><img src={`../../public/${icon[0]}.svg`} alt="" className={`h-8 w-8 flex ${mode}-filter`}/></div>
+                    <div className='w-1/4 sm:mx-auto'><img src={`../${icon[0]}.svg`} alt="" className={`h-8 w-8 flex ${mode}-filter`}/></div>
                     <div className='w-1/2 sm:w-4/12'><p className=' flex'>T: {daily.temperature_2m_min[index]}ºC - {daily.temperature_2m_max[index]}ºC</p></div>
                 </div>
             </div>

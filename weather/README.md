@@ -1,27 +1,29 @@
-# React + TypeScript + Vite
+# APP WEATHER
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## INTRO
 
-Currently, two official plugins are available:
+This app allows users to check weather forecast for a specific city for the next 24hs or for the next 7 days.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+User has 5 credits to search weather up to 5 times. After that, they must suscribe to keep doing queries.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+---
 
-- Configure the top-level `parserOptions` property like this:
+## DESIGN
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+The design can be found here: https://www.figma.com/file/P2ZGl63OM7iQZH3dx4RxlN/Weather?type=design&node-id=0%3A1&mode=design&t=yT2q5zvniTp9Ux3V-1
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+---
+
+---
+
+## RUN AND DEPLOY
+
+To run the app in development mode go to the project folder in the terminal and execute the script: npm run dev
+
+To build the app for deployment go to the project folder in the terminal and execute the script: npm run build
+
+---
+
+---

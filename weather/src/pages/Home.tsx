@@ -1,4 +1,4 @@
-import { FormEvent, useState } from 'react'
+import { FormEvent, useState, useRef } from 'react'
 import getForecast from '../logic/getForecast'
 import getCityCoordinates from '../logic/getCityCoordinates'
 import HourForecast from '../components/HourForecast'
@@ -39,10 +39,16 @@ export default function Home({setSubscriptionModal}: HomeProps) {
 
     const { freeze, unfreeze } = useAppContext()!
 
+    const inputRef = useRef<HTMLInputElement | null>(null)
+
     const handleSearchCity = (event: FormEvent) => {
         freeze()
+
         event.preventDefault()
+
         try {
+            inputRef.current!.blur()
+
             const letters = /^[a-zA-Z\s]+$/
             if (searchValue === '' || !letters.test(searchValue)) {
                 unfreeze()
@@ -68,8 +74,6 @@ export default function Home({setSubscriptionModal}: HomeProps) {
 
                     throw new Error('city not found')
                 }
-
-                document.querySelector(".search-form")!.blur()
 
                 setCity({name: city.name, country: city.country})
 
@@ -116,7 +120,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
     <TopBar credits={credits} mode={mode} setMode={setMode} />
     <div className='h-5/6 w-full flex flex-col justify-center items-center gap-4 text-[var(--slate-700)]'>
     <div className="flex flex-col justify-center items-center gap-4 sm:gap-6 w-full h-full">
-        <SearchForm handleSearchCity={handleSearchCity} searchValue={searchValue} handleInputChange={handleInputChange} />
+        <SearchForm handleSearchCity={handleSearchCity} searchValue={searchValue} handleInputChange={handleInputChange} inputRef={inputRef} />
         {error && <p className='text-xl italic rounded-md font-semibold bg-[var(--slate-100-50)] backdrop-blur-md h-fit p-4'>{error}</p>}
         {!error && city && <p className='text-xl italic font-semibold rounded-md bg-[var(--slate-100-50)] backdrop-blur-md h-fit p-4'>{city.name}, {city.country}</p>}
         {!error && forecast && <ChoiceButtons prediction={prediction} setPrediction={setPrediction} />}

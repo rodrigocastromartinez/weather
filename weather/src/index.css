@@ -14,6 +14,7 @@
     --button-background-selected: #103570;
 
     background-image: url("./assets/sky.jpg");
+    background-position: center;
   }
 
   :root.dark {
@@ -27,6 +28,7 @@
     --button-background-selected: rgb(34, 43, 57);
 
     background-image: url("./assets/night.jpg");
+    background-position: center;
   }
 }
 
