@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const key = import.meta.env.VITE_OPEN_WEATHER_API_KEY
+const key = "7afed3f6606a5dc540c51522d0860c88"
 
 /**
  * Gets coordinates for a given city
