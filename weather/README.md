@@ -2,9 +2,13 @@
 
 ## INTRO
 
+This project was created using Vite, developed with React and Typescript.
+
 This app allows users to check weather forecast for a specific city for the next 24hs or for the next 7 days.
 
 User has 5 credits to search weather up to 5 times. After that, they must suscribe to keep doing queries.
+
+If you need to check further documentation of the project, go to './docs' directory and run the 'index.html' file inside, in a Live Server.
 
 ---
 
@@ -12,19 +16,25 @@ User has 5 credits to search weather up to 5 times. After that, they must suscri
 
 ## DESIGN
 
-The design can be found here: https://www.figma.com/file/P2ZGl63OM7iQZH3dx4RxlN/Weather?type=design&node-id=0%3A1&mode=design&t=yT2q5zvniTp9Ux3V-1
+The design has been done in Figma and it can be found here: https://www.figma.com/file/P2ZGl63OM7iQZH3dx4RxlN/Weather?type=design&node-id=0%3A1&mode=design&t=yT2q5zvniTp9Ux3V-1
 
 ---
 
 ---
 
-## RUN AND DEPLOY
+## AVAILABLE SCRIPTS
 
-To run the app, first of all, you must install the dependencies. To do so, go to the project folder in the terminal and execute the script: npm install. Then:
+### npm install
+
+To run the app, first of all, you must install the dependencies. To do so, go to the project folder in the terminal and execute the script: npm install
+
+### npm run dev
 
 To run the app in development mode go to the project folder in the terminal and execute the script: npm run dev
 
-To build the app for deployment go to the project folder in the terminal and execute the script: npm run build
+### npm run build
+
+To build the app for deployment go to the project folder in the terminal and execute the script: npm run build. It will generate the '.dist' directory, which you must use to send the app to production
 
 ---
 
