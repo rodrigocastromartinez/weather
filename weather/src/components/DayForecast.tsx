@@ -1,4 +1,4 @@
-import { ICON_MAP } from '../logic/addMapping'
+import { ICON_MAP } from '../helpers/addMapping'
 
 interface DayForecastProps {
     daily: {
