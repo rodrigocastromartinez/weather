@@ -7,6 +7,8 @@ import TopBar from '../components/TopBar'
 import ChoiceButtons from '../components/ChoiceButtons'
 import SearchForm from '../components/SearchForm'
 import useAppContext from '../hooks/useAppContext'
+import decreaseCredit from '../logic/decreaseCredit'
+import retrieveCredits from '../logic/retrieveCredits'
 
 interface Hourly {
     relativehumidity_2m: number[],
@@ -47,7 +49,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
         event.preventDefault()
 
         try {
-            inputRef.current!.blur()
+            inputRef.current?.blur()
 
             const letters = /^[a-zA-Z\s]+$/
             if (searchValue === '' || !letters.test(searchValue)) {
@@ -58,7 +60,9 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                 return
             }
 
-            if(localStorage.credits <= 0) {
+            const credits = retrieveCredits()
+
+            if(credits <= 0) {
                 unfreeze()
 
                 setSubscriptionModal(true)
@@ -94,8 +98,8 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                         weathercode: res.data.daily.weathercode,
                     }
                     setDaily(daily)
-                    localStorage.credits = localStorage.credits - 1
-                    setCredits(localStorage.credits)
+                    const credits = decreaseCredit()
+                    setCredits(credits)
                     unfreeze()
                 }).catch(error => {
                     unfreeze()
