@@ -10,6 +10,14 @@ User has 5 credits to search weather up to 5 times. After that, they must suscri
 
 If you need to check further documentation of the project, go to './docs' directory and run the 'index.html' file inside, in a Live Server.
 
+To run the app, clone the repository on your computer.
+
+The app gets data from open weather api. In order to use the app, you must register and get an api key here: https://openweathermap.org/
+
+Once you have a valid api key, you must create a .env file in the root directory of the project and save your api key as follows:
+
+VITE_OPEN_WEATHER_API_KEY = your-api-key
+
 ---
 
 ---

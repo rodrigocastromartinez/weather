@@ -66,7 +66,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
                 return
             } 
     
-            getCityCoordinates(searchValue).then(city => {
+            getCityCoordinates(searchValue)?.then(city => {
                 if(!city){
                     unfreeze()
 
@@ -77,7 +77,7 @@ export default function Home({setSubscriptionModal}: HomeProps) {
 
                 setCity({name: city.name, country: city.country})
 
-                getForecast(city.lat, city.lon).then(res => {
+                getForecast(city.lat, city.lon)?.then(res => {
                     setError(undefined)
                     const hourly = {
                         relativehumidity_2m: res.data.hourly.relativehumidity_2m,
